@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Watch Dogs - Coming Soon</title>
+    <!-- Stylesheet -->
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #121212;
+            color: #ffffff;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        h1 {
+            font-size: 48px;
+            margin: 0;
+            color: #ff0000; /* Red text color */
+        }
+
+        p {
+            font-size: 18px;
+            margin-top: 10px;
+        }
+
+        .countdown {
+            font-size: 24px;
+            margin-top: 20px;
+        }
+
+        /* Navigation Styles */
+        nav {
+            display: flex;
+            justify-content: center;
+            background-color: #333;
+            padding: 10px;
+            margin-top: 20px;
+        }
+
+        /* Navigation Link Styles */
+        nav a {
+            color: #ffffff;
+            text-decoration: none;
+            padding: 10px 20px;
+            font-size: 18px;
+            border: 2px solid #ff0000; /* Red border */
+            border-radius: 5px; /* Rounded corners */
+            margin: 0 5px;
+        }
+
+        /* Hover Effect for Navigation Links */
+        nav a:hover {
+            background-color: #555;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        /* Back Button Styles */
+        .back-button {
+            background-color: #ff0000;
+            color: #ffffff;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 5px;
+            margin-top: 20px;
+        }
+
+        .back-button:hover {
+            background-color: #555;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <h1>Watch Dogs</h1>
+        <p>Something big is coming soon...</p>
+    </header>
+
+    <div class="countdown">
+        <p id="countdown-text">Countdown to the big reveal:</p>
+        <p id="countdown">00:00:00:00</p>
+    </div>
+
+    
+    <!-- Back Button -->
+    <button class="back-button" onclick="goBack()">Go Back</button>
+
+    <footer>
+        <p>&copy; 2023 ruars inc. All rights reserved.</p>
+    </footer>
+
+    <!-- JavaScript for Countdown and Back Button -->
+    <script>
+        // Set the date we're counting down to
+        const countDownDate = new Date("Nov 30, 9999 00:00:00").getTime();
+
+        // Update the countdown every 1 second
+        const x = setInterval(function () {
+            // Get the current date and time
+            const now = new Date().getTime();
+
+            // Calculate the remaining time
+            const distance = countDownDate - now;
+
+            // Calculate days, hours, minutes, and seconds
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            // Display the countdown
+            document.getElementById("countdown").innerHTML = days + "d " + hours + "h " + minutes + "m " + seconds + "s ";
+
+            // If the countdown is over, display a message
+            if (distance < 0) {
+                clearInterval(x);
+                document.getElementById("countdown").innerHTML = "EXPIRED";
+            }
+        }, 1000);
+
+        // JavaScript function to go back
+        function goBack() {
+            window.history.back();
+        }
+    </script>
+</body>
+
